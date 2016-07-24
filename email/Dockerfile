@@ -23,7 +23,7 @@ USER mymail
 
 RUN mkdir /home/mymail/bin
 ENV USER mymail
-
+ENV HOME /home/mymail
 ENV PATH /home/mymail/bin:${PATH}
 
 # Now install the latest offlineimap locally...
@@ -32,3 +32,6 @@ RUN cd /home/mymail && \
     cd offlineimap && \
     git checkout $(git tag | grep -v rc | tail -1)  && \
     ln -s /home/mymail/offlineimap/offlineimap.py /home/mymail/bin/offlineimap.py
+
+RUN cd ~ && \
+    git clone https://github.com/google/gmail-oauth2-tools
