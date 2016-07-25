@@ -8,7 +8,7 @@ RUN apt-get update
 RUN \
     apt-get install -y --no-install-recommends \
         file \
-        offlineimap
+        python-debian
 # && \
 #    apt-get clean && \
 #    rm -rf /var/lib/apt/lists/*
@@ -16,10 +16,6 @@ RUN \
 RUN useradd -ms /bin/bash mymail
 WORKDIR /home/mymail
 USER mymail
-
-#RUN git config --global user.email "you@example.com" && \
-#  git config --global user.name "Your Name"
-#RUN export USER=ikiwiki ; \
 
 RUN mkdir /home/mymail/bin
 ENV USER mymail
@@ -33,5 +29,6 @@ RUN cd /home/mymail && \
     git checkout $(git tag | grep -v rc | tail -1)  && \
     ln -s /home/mymail/offlineimap/offlineimap.py /home/mymail/bin/offlineimap.py
 
+# Install the Gmail OAuth2 tools
 RUN cd ~ && \
     git clone https://github.com/google/gmail-oauth2-tools
