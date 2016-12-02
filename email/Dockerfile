@@ -10,17 +10,14 @@ RUN apk add --update \
         wget \
         python \
         py-pip \
-        python3
-
-## FIXME  FIXME  FIXME  FIXME
-## REMEMBER to put a `rm ...` here to make the image smaller
+        python3 \
+    && rm -rf /var/cache/apk/*
 
 # Install the msmtp-queue and offlineimap (+ six)
 RUN pip3 install --upgrade pip \
     && pip3 install mir.msmtpq \
     && pip2 install six \
     && pip2 install offlineimap
-#    && pip2 install offlineimap==7.0.12
 
 ADD msmtp.FAKE /bin/msmtp
 RUN chmod a+rx /bin/msmtp

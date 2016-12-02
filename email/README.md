@@ -1,5 +1,7 @@
 # CYA - Email
 
+Part of the CYA Project : [https://github.com/v4tech/cya-project](https://github.com/v4tech/cya-project)
+
 ## Offline email tools
 
 **Goals**
@@ -24,7 +26,7 @@ docker pull v4tech/cya-email
 - Source the wrapper functions:
 
 ``` shell
-wget https://raw.githubusercontent.com/v4tech/cya-with-docker/master/cya-dockerfunc.sh
+wget https://raw.githubusercontent.com/v4tech/cya-project/master/cya-dockerfunc.sh
 source cya-dockerfunc.sh
 ```
 
