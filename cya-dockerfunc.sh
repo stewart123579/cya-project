@@ -16,8 +16,8 @@ msmtpq() {
     docker run --rm -i \
         -v ${SENDPYRC}:/home/mymail/.sendpyrc:ro \
         -v ${MSMTPQ_QUEUE}:/home/mymail/.config/msmtpq/queue \
-        ${CYA_CONTAINER} \
         --name cya-msmtpq \
+        ${CYA_CONTAINER} \
         msmtpq "$@"
 }
 
@@ -25,8 +25,8 @@ msmtpq() {
 msmtp() {
     docker run --rm -i \
         -v ${SENDPYRC}:/home/mymail/.sendpyrc:ro \
-        ${CYA_CONTAINER} \
         --name cya-msmtp \
+        ${CYA_CONTAINER} \
         msmtp "$@"
 }
 
@@ -35,7 +35,7 @@ offlineimap() {
     docker run --rm -i \
         -v ${OFFLINEIMAPCONF}:/home/mymail/.offlineimaprc:ro \
         -v $HOME/notmuch-mail:/home/mymail/Mail \
-        ${CYA_CONTAINER} \
         --name cya-offlineimap \
+        ${CYA_CONTAINER} \
         fetch-messages.sh "$@"
 }
