@@ -1,0 +1,16 @@
+#!/bin/sh
+#
+# A placeholder script that replaces 'msmtp' with 'send.py' for use with 'mir.msmtpq'.
+# Simply passes stdin to send.py, copy this to ~/bin/msmtp for awesomesauce.
+#
+# Usage:   cat MyAwesomeEmail.txt | msmtp
+
+PROGNAME=$(basename $0)
+
+# This could be used for debugging...
+echo "$(date): >> ${PROGNAME} $@ <<" > ~/msmtp.args
+
+# Note this will likely fail if you don't pass anything in via stdin
+#cat - | send.py --readfrommsg
+send.py --readfrommsg <&0
+
