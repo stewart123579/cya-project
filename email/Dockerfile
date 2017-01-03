@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM alpine:3.4
 MAINTAINER Stewart V. Wright <stewart@vifortech.com>
 
 RUN apk add --update \
