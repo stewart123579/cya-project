@@ -138,10 +138,40 @@ msmtpq --manage send
 ```
 
 
+## Creating OAuth2 tokens
+You really should read Google's [OAuth2DotPyRunThrough](https://github.com/google/gmail-oauth2-tools/wiki/OAuth2DotPyRunThrough).
+
+There are effectively two steps:
+1. Registering An Application
+2. Creating and Authorizing an OAuth Token
+
+### Step 1: Registering An Application
+> To use OAuth2, you must have registered your application through the [Google APIs Console](https://code.google.com/apis/console). Registration is explained in [Using OAuth 2.0 to Access Google 
+APIs](https://developers.google.com/accounts/docs/OAuth2).
+> 
+> After registering your application, go to the "API Access" tab and create a Client ID. `oauth2.py` is designed to work with the "Installed application" application type. After creating a Client 
+ID, the API Access tab should show a Client ID and Client secret. You will need to supply these values to `oauth2.py` in the next step.
+
+### Step 2: Creating and Authorizing an OAuth Token
+Run the following command - using your `client_id` and `client_secret`:
+``` shell
+ docker run --rm -it v4tech/cya-email \
+     python /home/mymail/gmail-oauth2-tools/python/oauth2.py \
+    --generate_oauth2_token --client_id=364545978226.apps.googleusercontent.com \
+    --client_secret=zNrNsBzOOnQy8_O-8LkofeTR
+```
+The output will be something like:
+
+    To authorize token, visit this url and follow the directions:
+      
+https://accounts.google.com/o/oauth2/auth?client_id=364545978226.apps.googleusercontent.com&redirect_uri=urn%3Aietf%3Awg%3Aoauth%3A2.0%3Aoob&response_type=code&scope=https%3A%2F%2Fmail.google.com%2F
+    Enter verification code:
+
+Visit the URL in your browser. You may need to login to Google. Then you should see a request to grant access to your application.  Done!
+
 
 ## TO DO
 Things I still need to do - or creat links to solutions elsewhere:
-- Explain the creation of OAuth2 tokens
 - Add in some sample config files
 - CI testing
 
@@ -169,4 +199,3 @@ You'll have to work out what `${HOME}/sendpyrc`, etc.,  means in your system.  I
 [send.py.github]: https://github.com/cscorley/send.py
 [jvr.philosophy.1]: https://jrvcomputing.wordpress.com/2015/06/16/head-in-the-cloud-feet-on-the-ground-part-i-email-2/
 [jvr.oauth2]: https://jrvcomputing.wordpress.com/2016/11/21/oauth2-authentication-for-offline-email-clients/
-
