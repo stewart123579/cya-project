@@ -163,8 +163,7 @@ Run the following command - using your `client_id` and `client_secret`:
 The output will be something like:
 
     To authorize token, visit this url and follow the directions:
-      
-https://accounts.google.com/o/oauth2/auth?client_id=364545978226.apps.googleusercontent.com&redirect_uri=urn%3Aietf%3Awg%3Aoauth%3A2.0%3Aoob&response_type=code&scope=https%3A%2F%2Fmail.google.com%2F
+      https://accounts.google.com/o/oauth2/auth?client_id=364545978226.apps.googleusercontent.com&redirect_uri=urn%3Aietf%3Awg%3Aoauth%3A2.0%3Aoob&response_type=code&scope=https%3A%2F%2Fmail.google.com%2F
     Enter verification code:
 
 Visit the URL in your browser. You may need to login to Google. Then you should see a request to grant access to your application.  Done!
